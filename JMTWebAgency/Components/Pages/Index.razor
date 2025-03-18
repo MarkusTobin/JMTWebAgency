@@ -1,7 +1,82 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>JMT Web Agency</PageTitle>
 
-<h1>Hello, index!</h1>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1>Welcome to JMT Web Agency</h1>
+        <p class="lead">We create modern, high-performance websites for your business.</p>
+        <h4>What we do</h4>
+        <p>We offer web design, development, and SEO optimization.</p>
+        <p>JMT is a dedicated web agency helping businesses grow online.</p>
 
-Welcome to JMT.
+        <button class="btn btn-primary" @onclick="Popup">Contact us</button>
+        
+        <h4>Our location</h4>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d465066.4971939445!2d-75.81213165652676!3d24.404530695056216!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8930efe2a3236c07%3A0xc01cbb5fd538dd5!2sCat%20Island%2C%20Bahamas!5e0!3m2!1ssv!2sse!4v1742293596997!5m2!1ssv!2sse" 
+        width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+</div>
+
+@if (showPopup)
+{
+    <div class="popup">
+        <div class="popup-content">
+            <p>You cannot contact us ^_^</p>
+            <span class="close" @onclick="ClosePopup">&times;</span>
+            <button class="btn btn-primary" @onclick="ClosePopup">Close</button>
+        </div>
+    </div>
+}
+
+@code {
+    private bool showPopup = false;
+    private void Popup()
+    {
+        showPopup = true;
+        StateHasChanged();
+    }
+    private void ClosePopup()
+    {
+        showPopup = false;
+        StateHasChanged();
+    }
+   
+}
+<style>
+
+    .popup {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.7); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 999;
+    }
+
+    .popup-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        width: 300px;
+        text-align: center;
+        position: relative;
+    }
+
+        .popup-content .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+            .popup-content .close:hover {
+                color: red;
+            }
+</style>
