@@ -1,8 +1,99 @@
 ﻿@page "/aboutus"
-<h3>AboutUs</h3>
-<h1>Hello, index!</h1>
+
+
+<div class="container my-5">
+	<div class="row justify-content-center">
+		<div class="col-12 col-lg-10 col-xl-8 text-center">
+			<h1 class="mb-4">About JMT Web Agency</h1>
+
+			<div class="card mb-5">
+				<div class="card-body">
+					<h2 class="card-title">Our Story</h2>
+					<p class="card-text">JMT was founded in 2025, when three classmates where forced to cooporate on a project to learn agile methods, specifically Scrum.
+						Jeremias, Markus and Tilda wondered what they should do. Of course they wanted to succeed, however they also had individual assignments in another course that soon was due.
+						In this hardship times, they put their first letters of names together and since that day, JMT Web Agency is thriving!
+					</p>
+					<p class="card-text">
+						Since the agency isn't a real company, we don't have much to say. Nevertheless we would like some real companies to discover us and give us jobs from July 2026, when we graduate.
+					</p>
+				</div>
+			</div>
+
+			<div class="card mb-5">
+				<div class="card-body">
+					<h2 class="card-title">Our Mission</h2>
+					<p class="card-text">
+						At JMT our mission is to learn as much as possible so we can be at least decent developers!
+					</p>
+				</div>
+			</div>
+
+			<div class="card mb-5">
+				<div class="card-body">
+					<h2 class="card-title">Our Team</h2>
+					<div class="row justify-content-center">
+						@foreach (var teamMember in teamMembers)
+						{
+							<div class="col-md-4 mb-4">
+								<div class="card h-100">
+									<div class="card-body">
+										<h5 class="card-title">@teamMember.Name</h5>
+										<h6 class="card-subtitle mb-2 text-muted">@teamMember.Position</h6>
+										<p class="card-text">@teamMember.Bio</p>
+									</div>
+								</div>
+							</div>
+						}
+					</div>
+				</div>
+			</div>
+
+			<div class="card">
+				<div class="card-body">
+					<h2 class="card-title">Contact Us</h2>
+					<p class="card-text">
+						Do you have questions? Don't hesitate to contact us! We'll probably answer late at night since we are developers now.
+					</p>
+					<p class="card-text">
+						<strong>Email:</strong> wedonthaveacompanyemail@example.com <br/>
+						<strong>Phone:</strong> 000-000 00 00 <br/>
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
 
 @code {
+	private List<TeamMember> teamMembers = new List<TeamMember>
+	{
+		new TeamMember
+		{
+			Name = "Jeremias Granqvist",
+			Position = "Developer & Co-Founder",
+			Bio = "Jeremias has experience from food- and service industries. He decided he didn't like it, so now he's on the way to be a developer. He also likes climbing, preferably outdoors but only if it's sunny."
+		},
 
+		new TeamMember
+		{
+			Name = "Markus Tobin",
+			Position = "Scrum Master & Co-Founder",
+			Bio = "Markus is a pro LOL-player, and for some reason he didn't want to do that anymore so now he's studying to be a developer. He has never bought his own headset, because he got them for free when playing pro."
+		},
+
+		new TeamMember
+		{
+			Name = "Tilda Kristensson",
+			Position = "Developer & Co-Founder",
+			Bio = "Tilda thought she wanted to work in HR and recruitment, but she was wrong. She decided to exchange humans with computers and code instead, she is on her away to be a developer as well."
+		}
+	};
+
+	public class TeamMember
+	{
+		public string Name { get; set; }
+		public string Position { get; set; }
+		public string Bio { get; set; }
+	}
 }
 
